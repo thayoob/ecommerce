@@ -54,7 +54,6 @@ class CategoryController extends Controller
 
         $category = Category::findOrFail($category);
 
-        $category = new Category;
         $category->name = $validatedData['name'];
         $category->slug = Str::slug($validatedData['slug']);
         $category->description = $validatedData['description'];
