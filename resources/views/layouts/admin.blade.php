@@ -21,7 +21,9 @@
     <!-- endinject -->
     <link rel="shortcut icon" href="{{ asset('admin/images/favicon.png') }}" />
 
+    <link rel="stylesheet" href="{{ asset('assets\css\bootstrap.min.css') }}">
 
+    @livewireStyles
 </head>
 
 <body>
@@ -55,7 +57,11 @@
     <script src="{{ asset('admin/js/dataTables.bootstrap4.js') }}"></script>
     <!-- End custom js for this page-->
 
+    <script src="{{ asset('assets\js\bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets\js\jquery.min.js') }}"></script>
+
     @livewireScripts
+    @stack('script')
 </body>
 
 </html>

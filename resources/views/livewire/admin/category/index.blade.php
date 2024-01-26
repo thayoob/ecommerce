@@ -10,6 +10,7 @@
                     </button>
                 </div>
                 <form wire:submit.prevent="destroyCategory">
+
                     <div class="modal-body">
                         <h6>Are you sure you want to delete this data? </h6>
                     </div>
@@ -60,6 +61,7 @@
                                         <a href="#" wire:click="deleteCategory({{ $category->id }})"
                                             class="btn btn-danger" data-toggle="modal"
                                             data-target="#deleteModal">Delete</a>
+
                                     </td>
                                 </tr>
                             @endforeach
@@ -71,3 +73,10 @@
         </div>
     </div>
 </div>
+@push('script')
+    <script>
+        window.addEventListener('close-model', event => {
+            $('#deleteModal').modal('hide');
+        });
+    </script>
+@endpush
