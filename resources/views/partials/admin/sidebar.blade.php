@@ -10,21 +10,38 @@
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
                 aria-controls="ui-basic">
                 <i class="mdi mdi-circle-outline menu-icon"></i>
-                <span class="menu-title">UI Elements</span>
+                <span class="menu-title">Category</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a>
+                    <li class="nav-item"> <a class="nav-link" href="{{ url('admin\category\create') }}">Add Category</a>
+                    </li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ url('admin\category') }}">View Category</a>
                     </li>
                 </ul>
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="pages/forms/basic_elements.html">
+            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
+                aria-controls="ui-basic">
+                <i class="mdi mdi-file-document-box-outline menu-icon"></i>
+                <span class="menu-title">Products</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{ url('admin\category\create') }}">Add Category</a>
+                    </li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ url('admin\category') }}">View Category</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url('admin\brands') }}">
                 <i class="mdi mdi-view-headline menu-icon"></i>
-                <span class="menu-title">Form elements</span>
+                <span class="menu-title">Branch</span>
             </a>
         </li>
         <li class="nav-item">
