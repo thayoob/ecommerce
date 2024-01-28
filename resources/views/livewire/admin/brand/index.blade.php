@@ -11,7 +11,7 @@
                     </h4>
                 </div>
                 <div class="card-body">
-                    <table class="table table-bordered table-stiped">
+                    <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -22,11 +22,29 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td></td>
-                            </tr>
+                            @forelse ($brands as $brand)
+                                <tr>
+                                    <td>{{ $brand->id }}</td>
+                                    <td>{{ $brand->name }}</td>
+                                    <td>{{ $brand->slug }}</td>
+                                    <td>{{ $brand->status == '1' ? 'hidden' : 'visible' }}</td>
+                                    <td>
+                                        <a href="#" wire:click='editBrand({{ $brand->id }})'
+                                            data-toggle="modal" data-target="#updateBrandModal"
+                                            class="btn btn-sm btn-success">Edit</a>
+                                        <a href="#" wire:click='deleteBrand({{ $brand->id }})'
+                                            data-toggle="modal" data-target="#deleteBrandModal"
+                                            class="btn btn-sm btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="5">No Brands Found</td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
+                    <div>{{ $brands->links() }}</div>
                 </div>
             </div>
         </div>
@@ -36,6 +54,9 @@
     <script>
         window.addEventListener('close-model', event => {
             $('#addBrandModal').modal('hide');
+            $('#updateBrandModal').modal('hide');
+            $('#deleteBrandModal').modal('hide');
+
         });
     </script>
 @endpush

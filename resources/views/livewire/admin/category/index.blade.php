@@ -61,7 +61,6 @@
                                         <a href="#" wire:click="deleteCategory({{ $category->id }})"
                                             class="btn btn-danger" data-toggle="modal"
                                             data-target="#deleteModal">Delete</a>
-
                                     </td>
                                 </tr>
                             @endforeach
@@ -73,6 +72,22 @@
         </div>
     </div>
 </div>
+{{-- @push('script')
+    <script>
+        Livewire.on('close-modal', function() {
+            $('#deleteModal').modal('hide');
+        });
+    </script>
+@endpush --}}
+{{-- @push('script')
+    <script>
+        Livewire.on('close-modal', function() {
+            $('#deleteModal').modal('hide');
+        });
+    </script>
+@endpush --}}
+
+
 @push('script')
     <script>
         window.addEventListener('close-model', event => {

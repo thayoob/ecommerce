@@ -30,7 +30,9 @@ class Index extends Component
         }
         $category->delete();
         session()->flash('message', 'Category Deleted');
-        $this->dispatchBrowserEvent('close-model');
+
+        $this->dispatch('close-model');
+        // $this->emit('close-modal');
     }
     public function render()
     {
