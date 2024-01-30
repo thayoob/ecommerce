@@ -11,63 +11,36 @@
                     </h3>
                 </div>
                 <div class="card-body">
-                    <div>
-                        <ul class="nav nav-tabs" id="myTabs">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="tab1-tab" data-toggle="tab" href="#tab1">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="tab2-tab" data-toggle="tab" href="#tab2">SEO Tags</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="tab3-tab" data-toggle="tab" href="#tab3">Details</a>
-                            </li>
-                        </ul>
-                        <div class="tab-content mt-3">
-                            <div class="tab-pane fade show active" id="tab1">
-                                <div class="mb-3">
-                                    <label for="">Category</label>
-                                    <select name="category_id" class="form-control-" id="">
-                                        @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="">Product Name</label>
-                                <input type="text" name="name" class="form-control">
-                            </div>
-                            <div class="mb-3">
-                                <label for="">Product slug</label>
-                                <input type="text" name="slug" class="form-control">
-                            </div>
-                            <div class="mb-3">
-                                <label for="">Barnd</label>
-                                <select name="brand" class="form-control-" id="">
-                                    @foreach ($brands as $brand)
-                                        <option value="{{ $brand->name }}">{{ $brand->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="">Small Description (500 Words)</label>
-                                <textarea name="small_descriptio" class="form-control" rows="4"></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="">Description</label>
-                                <textarea name="description" class="form-control" rows="4"></textarea>
-                            </div>
-                            <div class="tab-pane fade" id="tab2">
-                                <h3>Tab 2 Content</h3>
-                                <p>This is the content of Tab 2.</p>
-                            </div>
-                            <div class="tab-pane fade" id="tab3">
-                                <h3>Tab 3 Content</h3>
-                                <p>This is the content of Tab 3.</p>
-                            </div>
+                    <!-- Tabs navs -->
+                    <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a data-mdb-tab-init class="nav-link active" id="ex1-tab-1" href="#ex1-tabs-1" role="tab"
+                                aria-controls="ex1-tabs-1" aria-selected="true">Tab 1</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a data-mdb-tab-init class="nav-link" id="ex1-tab-2" href="#ex1-tabs-2" role="tab"
+                                aria-controls="ex1-tabs-2" aria-selected="false">Tab 2</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a data-mdb-tab-init class="nav-link" id="ex1-tab-3" href="#ex1-tabs-3" role="tab"
+                                aria-controls="ex1-tabs-3" aria-selected="false">Tab 3</a>
+                        </li>
+                    </ul>
+                    <!-- Tabs navs -->
+
+                    <!-- Tabs content -->
+                    <div class="tab-content" id="ex1-content">
+                        <div class="tab-pane fade show active" id="ex1-tabs-1" role="tabpanel" aria-labelledby="ex1-tab-1">
+                            Tab 1 content
+                        </div>
+                        <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
+                            Tab 2 content
+                        </div>
+                        <div class="tab-pane fade" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3">
+                            Tab 3 content
                         </div>
                     </div>
+                    <!-- Tabs content -->
                 </div>
             </div>
         </div>
