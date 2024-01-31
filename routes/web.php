@@ -41,6 +41,7 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
         Route::get('/products', 'index');
         Route::get('/products/create', 'create');
         Route::post('/products', 'store');
+        Route::get('/products/{product}/edit', 'edit');
     });
 
     Route::get('/brands', [brandController::class, 'index']);

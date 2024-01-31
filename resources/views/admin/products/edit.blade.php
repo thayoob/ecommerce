@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3>
-                        Add Products
+                        Edit Products
                         <a href="{{ url('admin/products') }}" class="btn btn-danger btn-sm text-white float-end">Back</a>
                     </h3>
                 </div>
@@ -17,8 +17,9 @@
                             @endforeach
                         </div>
                     @endif
-                    <form action="{{ url('admin/products') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ url('admin/products/' . $product->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
@@ -48,23 +49,29 @@
                                     <label for="">Category</label>
                                     <select name="category_id" class="form-control-" id="">
                                         @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            <option value="{{ $category->id }}"
+                                                {{ $category->id == $product->category_id ? 'Selected' : '' }}>
+                                                {{ $category->name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="mb-3">
                                     <label for="">Product Name</label>
-                                    <input type="text" name="name" class="form-control">
+                                    <input type="text" name="name" value="{{ $product->name }}" class="form-control">
                                 </div>
                                 <div class="mb-3">
                                     <label for="">Product slug</label>
-                                    <input type="text" name="slug" class="form-control">
+                                    <input type="text" name="slug" value="{{ $product->slug }}" class="form-control">
                                 </div>
                                 <div class="mb-3">
                                     <label for="">Barnd</label>
                                     <select name="brand" class="form-control-" id="">
                                         @foreach ($brands as $brand)
-                                            <option value="{{ $brand->name }}">{{ $brand->name }}</option>
+                                            <option value="{{ $brand->name }}"
+                                                {{ $brand->name == $product->brand ? 'Selected' : '' }}>
+                                                {{ $brand->name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
