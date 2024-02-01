@@ -10,6 +10,9 @@
                     </h3>
                 </div>
                 <div class="card-body">
+                    @if (session('message'))
+                        <div class="alert alert-success">{{ session('message') }}</div>
+                    @endif
                     @if ($errors->any())
                         <div class="alert alert-warning">
                             @foreach ($errors->all() as $error)
@@ -77,49 +80,56 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="">Small Description (500 Words)</label>
-                                    <textarea name="small_description" class="form-control" rows="4"></textarea>
+                                    <textarea name="small_description" value="{{ $product->name }}" class="form-control" rows="4">{{ $product->small_description }}</textarea>
                                 </div>
                                 <div class="mb-3">
                                     <label for="">Description</label>
-                                    <textarea name="description" class="form-control" rows="4"></textarea>
+                                    <textarea name="description" class="form-control" rows="4">{{ $product->description }}</textarea>
                                 </div>
                             </div>
                             <div class="tab-pane border p-3 fade" id="seotags-tab-pane" role="tabpanel"
                                 aria-labelledby="seotags-tab" tabindex="0">
                                 <div class="mb-3">
                                     <label for="">Mata Title</label>
-                                    <input type="text" name="meta_title" class="form-control">
+                                    <input type="text" value="{{ $product->meta_title }}" name="meta_title"
+                                        class="form-control">
                                 </div>
                                 <div class="mb-3">
                                     <label for="">Meta Description (500 Words)</label>
-                                    <textarea name="meta_description" class="form-control" rows="4"></textarea>
+                                    <textarea name="meta_description" class="form-control" rows="4">{{ $product->meta_description }}</textarea>
                                 </div>
                                 <div class="mb-3">
                                     <label for="">Meta Keyword</label>
-                                    <textarea name="meta_keyword" class="form-control" rows="4"></textarea>
+                                    <textarea name="meta_keyword" class="form-control" rows="4">{{ $product->meta_keyword }}</textarea>
                                 </div>
                             </div>
                             <div class="tab-pane border p-3 fade" id="details-tab-pane" role="tabpanel"
                                 aria-labelledby="Details-tab" tabindex="0">
                                 <div class="mb-3">
                                     <label for="">Original Price</label>
-                                    <input type="text" name="original_price" class="form-control">
+                                    <input type="text" name="original_price" value="{{ $product->original_price }}"
+                                        class="form-control">
                                 </div>
                                 <div class="mb-3">
                                     <label for="">Selling Price</label>
-                                    <input type="text" name="selling_price" class="form-control">
+                                    <input type="text" name="selling_price" value="{{ $product->selling_price }}"
+                                        class="form-control">
                                 </div>
                                 <div class="mb-3">
                                     <label for="">Quantity</label>
-                                    <input type="number" name="quantity" class="form-control">
+                                    <input type="number" name="quantity" value="{{ $product->quantity }}"
+                                        class="form-control">
                                 </div>
                                 <div class="mb-3">
                                     <label for="">Trending</label>
-                                    <input type="checkbox" name="trending" style="width: 50px; height:50px;">
+                                    <input type="checkbox" name="trending"
+                                        {{ $product->trending == '1' ? 'Checked' : '' }}
+                                        style="width: 50px; height:50px;">
                                 </div>
                                 <div class="mb-3">
                                     <label for="">Status</label>
-                                    <input type="checkbox" name="status" style="width: 50px; height:50px;">
+                                    <input type="checkbox" name="status" {{ $product->status == '1' ? 'Checked' : '' }}
+                                        style="width: 50px; height:50px;">
                                 </div>
                             </div>
                             <div class="tab-pane border p-3 fade" id="image-tab-pane" role="tabpanel"
@@ -128,10 +138,27 @@
                                     <label for="">Upload Product Images</label>
                                     <input type="file" name="image[]" multiple class="form-control">
                                 </div>
+                                <div>
+                                    @if ($product->productImages)
+                                        <div class="row">
+                                            @foreach ($product->productImages as $image)
+                                                <div class="col-md-2">
+                                                    <img src="{{ asset($image->image) }}"
+                                                        style="width: 80px; height:80px ;" class="me-4 border"
+                                                        alt="image" />
+                                                    <a href="{{ url('admin/product-image/' . $image->id . '/delete') }}"
+                                                        class="d-block">Remove</a>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    @else
+                                        <h5>No Image Added</h5>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                         <div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
                         </div>
                     </form>
                 </div>
