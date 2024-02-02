@@ -3,6 +3,7 @@
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\ColorControler;
 use App\Http\Controllers\Admin\brandController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
@@ -47,6 +48,13 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
 
         Route::get('product-image/{product_image_id}/delete', 'destoryImage');
     });
-
+    Route::controller(ColorControler::class)->group(function () {
+        Route::get('/colors', 'index');
+        Route::get('/colors/create', 'create');
+        Route::Post('/colors/create', 'store');
+        Route::get('/colors/{color}/edit', 'edit');
+        Route::put('/colors/{color_id}', 'update');
+        Route::get('/colors/{color_id}/delete', 'destory');
+    });
     Route::get('/brands', [brandController::class, 'index']);
 });
