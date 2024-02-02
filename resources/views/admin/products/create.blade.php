@@ -40,6 +40,11 @@
                                     data-bs-target="#image-tab-pane" type="button" role="tab"
                                     aria-controls="image-tab-pane" aria-selected="true">Product Image</button>
                             </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="color-tab" data-bs-toggle="tab"
+                                    data-bs-target="#color-tab-pane" type="button" role="tab"
+                                    aria-controls="color-tab-pane" aria-selected="true">Product Color</button>
+                            </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade border p-3 show active" id="home-tab-pane" role="tabpanel"
@@ -120,6 +125,33 @@
                                 <div class="mb-3">
                                     <label for="">Upload Product Images</label>
                                     <input type="file" name="image[]" multiple class="form-control">
+                                </div>
+                            </div>
+                            <div class="tab-pane border p-3 fade" id="color-tab-pane" role="tabpanel"
+                                aria-labelledby="color-tab" tabindex="0">
+                                <div class="mb-3">
+                                    <label for="">Select Color</label>
+                                    <hr>
+                                    <div class="row">
+                                        @forelse ($colors as $color)
+                                            <div class="col-md-3">
+                                                <div class="p-2 border mb-3">
+                                                    Color: <input type="checkbox" value="{{ $color->id }}"
+                                                        name="colors[{{ $color->id }}]">
+                                                    {{ $color->name }}
+                                                    <br>
+                                                    Quantity: <input type="number"
+                                                        name="colorquantity[{{ $color->id }}]"
+                                                        style="width:70px; border: 1px sold;">
+                                                </div>
+                                            </div>
+                                        @empty
+                                            <div class="col-md-12">
+                                                <h1>No color found</h1>
+                                            </div>
+                                        @endforelse
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
