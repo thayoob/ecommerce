@@ -47,11 +47,12 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
         Route::get('/products/{product_id}/delete', 'destory');
 
         Route::get('product-image/{product_image_id}/delete', 'destoryImage');
+        Route::post('product-color/{prod_color_id}', 'updateProdColoQty');
     });
     Route::controller(ColorControler::class)->group(function () {
         Route::get('/colors', 'index');
         Route::get('/colors/create', 'create');
-        Route::Post('/colors/create', 'store');
+        Route::post('/colors/create', 'store');
         Route::get('/colors/{color}/edit', 'edit');
         Route::put('/colors/{color_id}', 'update');
         Route::get('/colors/{color_id}/delete', 'destory');

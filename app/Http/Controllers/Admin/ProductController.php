@@ -82,8 +82,10 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $brands = Brand::all();
-        $colors = Color::all();
         $product = Product::findOrFail($product_id);
+        $product_color = $product->productColors->pluck('color_id')->toArray();
+        $colors = Color::whereNotIn('id', $product_color)->get();
+
         return view('admin.products.edit', compact('categories', 'brands', 'product', 'colors'));
     }
 
@@ -155,5 +157,15 @@ class ProductController extends Controller
         }
         $product->delete();
         return redirect('/admin/products')->with('message', 'Product Deleted with all its image');
+    }
+
+    public function updateProdColoQty(Request $request, $prod_color_id)
+    {
+        $prductColorData = Product::findOrFail($request->product_id)
+            ->productColors()->where('id', $prod_color_id)->first();
+        $prductColorData->update([
+            'quantity' => $request->qty
+        ]);
+        return response()->json(['message' => 'Product Color Qty updated']);
     }
 }
