@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\brandController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\SliderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
+
+    Route::controller(SliderController::class)->group(function () {
+        Route::get('sliders', 'index');
+        Route::get('sliders/create', 'create');
+        Route::post('sliders/create', 'store');
+    });
+
     Route::controller(CategoryController::class)->group(function () {
         Route::get('/category', 'index');
         Route::get('/category/create', 'create');
@@ -58,5 +66,6 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
         Route::put('/colors/{color_id}', 'update');
         Route::get('/colors/{color_id}/delete', 'destory');
     });
+
     Route::get('/brands', [brandController::class, 'index']);
 });
