@@ -199,8 +199,8 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($product->productColors as $prodColor)
-                                                <tr>
-                                                    <td class="product-color-tr">
+                                                <tr class="product-color-tr">
+                                                    <td>
                                                         @if ($prodColor->color)
                                                             {{ $prodColor->color->name }}
                                                         @else
@@ -265,6 +265,19 @@
                     }
                 });
 
+            });
+            $(document).on('click', '.deleteProductColorBtn', function() {
+                var prod_color_id = $(this).val();
+                var thisClick = $(this);
+
+                $.ajax({
+                    type: "GET",
+                    url: "/admin/product-color/" + prod_color_id + "/delete",
+                    success: function(response) {
+                        thisClick.closest('.product-color-tr').remove();
+                        alert(response.message);
+                    }
+                });
             });
         });
     </script>
