@@ -31,7 +31,6 @@ class SliderController extends Controller
             $validatedData['image'] = "uploads/slider/$filename";
         }
         $validatedData['status'] = $request->status == true ? '1' : '0';
-
         Slider::create([
             'title' => $validatedData['title'],
             'description' => $validatedData['description'],

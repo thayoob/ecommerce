@@ -24,7 +24,7 @@
                         <div class="mb-3">
                             <label for="">image</label>
                             <input type="file" name="image" class="form-control">
-                            <img src="{{ asset('$slider->image') }}" style="height: 50px; width:50px;" alt="slider">
+                            <img src="{{ asset("$slider->image") }}" style="height: 50px; width:50px;" alt="slider">
                         </div>
                         <div class="mb-3">
                             <label for="">Status</label>
