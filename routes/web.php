@@ -72,5 +72,6 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
         Route::get('/colors/{color_id}/delete', 'destory');
     });
 
-    Route::get('/brands', [brandController::class, 'index']);
+    // Route::get('/brands', [brandController::class, 'index']);
+    Route::get('/brands', App\Livewire\Admin\Brand\Index::class, 'index');
 });
