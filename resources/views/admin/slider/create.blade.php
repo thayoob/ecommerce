@@ -22,19 +22,29 @@
                         <div class="mb-3">
                             <label for="">Title</label>
                             <input type="text" name="title" class="form-control">
+                            @error('title')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="">Description</label>
                             <textarea name="description" class="form-control" rows="3"></textarea>
+                            @error('description')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="">image</label>
                             <input type="file" name="image" class="form-control">
+                            @error('image')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="">Status</label>
                             <input type="checkbox" name="status" style="width: 30px; height: 30px;">
                             Checked=Hidden,Unchecked=visible
+
                         </div>
                         <div class="mb-3">
                             <button type="submit" class="btn btn-primary">Save</button>
