@@ -4,12 +4,14 @@
             @if ($category->brands)
                 <div class="card">
                     <div class="card-header">
-                        <h4>Brand</h4>
+                        <h4>Brands</h4>
                     </div>
                     <div class="card-body">
                         @foreach ($category->brands as $brandItem)
-                            <label class="d-block"> {{ $brandItem->name }}
-                                <input type="checkbox" wire:model="brandInputs" value="{{ $brandItem->name }}">
+                            <label class="d-block">
+                                {{-- <input type="checkbox" wire:model="brandInputs" value="{{ $brandItem->name }}"> --}}
+                                <input type="checkbox" wire:model="brandInputs" wire:click="applyFilter"
+                                    value="{{ $brandItem->name }}" />{{ $brandItem->name }}
                             </label>
                         @endforeach
                     </div>
