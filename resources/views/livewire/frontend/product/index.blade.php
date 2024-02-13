@@ -61,8 +61,8 @@
                                     </a>
                                 </h5>
                                 <div>
-                                    <span class="selling-price">{{ $productitem->selling_price }}</span>
-                                    <span class="original-price">{{ $productitem->original_price }}</span>
+                                    <span class="selling-price">₹{{ $productitem->selling_price }}</span>
+                                    <span class="original-price">₹{{ $productitem->original_price }}</span>
                                 </div>
 
                             </div>

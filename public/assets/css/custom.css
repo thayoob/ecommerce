@@ -171,3 +171,124 @@
     margin-top: 10px;
 }
 /* Product Card End */
+/* Product View */
+.product-view .product-name{
+    font-size: 24px;
+    color: #2874f0;
+}
+.product-view .product-name .label-stock{
+    font-size: 13px;
+    padding: 4px 13px;
+    border-radius: 5px;
+    color: #fff;
+    box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%);
+    float: right;
+}
+.product-view .product-path{
+    font-size: 13px;
+    font-weight: 500;
+    color: #252525;
+    margin-bottom: 16px;
+}
+.product-view .selling-price{
+    font-size: 26px;
+    color: #000;
+    font-weight: 600;
+    margin-right: 8px;
+}
+.product-view .original-price{
+    font-size: 18px;
+    color: #937979;
+    font-weight: 400;
+    text-decoration: line-through;
+}
+.product-view .btn1{
+    border: 1px solid;
+    margin-right: 3px;
+    border-radius: 0px;
+    font-size: 14px;
+    margin-top: 10px;
+}
+.product-view .btn1:hover{
+    background-color: #2874f0;
+    color: #fff;
+}
+.product-view .input-quantity{
+    border: 1px solid #000;
+    margin-right: 3px;
+    font-size: 12px;
+    margin-top: 10px;
+    width: 58px;
+    outline: none;
+    text-align: center;
+}
+/* Custom radio button design */
+.custom-radio {
+    display: inline-block;
+    position: relative;
+    padding-left: 25px;
+    margin-right: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+/* Hide default radio button */
+.custom-radio input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create the radio button style */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.custom-radio:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue color */
+.custom-radio input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when the radio button is checked */
+.custom-radio input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.custom-radio .checkmark:after {
+    top: 4px;
+    left: 4px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: white;
+}
+
+/* Adjust the label position */
+.custom-radio-label {
+    padding-left: 30px;
+}
+/* Add space between price and radio buttons */
+.color-selection {
+    margin-top: 10px; /* Adjust the value as needed */
+}
+/* End Product View */
