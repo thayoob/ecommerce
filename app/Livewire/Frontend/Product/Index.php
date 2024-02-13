@@ -7,15 +7,16 @@ use Livewire\Component;
 
 class Index extends Component
 {
-    public $products, $category, $brandInputs = [];
+    public $products, $category, $brandInputs = [], $priceInput;
     protected $queryString = [
         'brandInputs' => ['except' => '', 'as' => 'brand'],
+        'priceInput' => ['except' => '', 'as' => 'price'],
     ];
 
     public function mount($category)
     {
         $this->category = $category;
-        $this->applyFilter(); // Apply filter when component is mounted
+        $this->applyFilter();
     }
 
     public function applyFilter()
@@ -24,7 +25,16 @@ class Index extends Component
             ->when($this->brandInputs, function ($q) {
                 $q->whereIn('brand', $this->brandInputs);
             })
-            ->where('status', '0') // I assume this is where you apply the status filter
+            ->when($this->priceInput, function ($q) {
+
+                $q->when($this->priceInput == 'high-to-low', function ($q2) {
+                    $q2->orderBy('selling_price', 'DESC');
+                })
+                    ->when($this->priceInput == 'low-to-high', function ($q2) {
+                        $q2->orderBy('selling_price', 'ASC');
+                    });
+            })
+            ->where('status', '0')
             ->get();
     }
 
