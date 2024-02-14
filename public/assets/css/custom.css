@@ -222,73 +222,69 @@
     outline: none;
     text-align: center;
 }
-/* Custom radio button design */
-.custom-radio {
-    display: inline-block;
-    position: relative;
-    padding-left: 25px;
-    margin-right: 15px;
-    cursor: pointer;
-    font-size: 16px;
-    line-height: 24px;
-}
 
-/* Hide default radio button */
-.custom-radio input {
-    position: absolute;
-    opacity: 0;
+.colorSeclectionLabel{
+    color: #000;
+    padding: 2px 10px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    font-size: 14px;
     cursor: pointer;
 }
-
-/* Create the radio button style */
-.checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 18px;
-    width: 18px;
-    background-color: #eee;
-    border-radius: 50%;
+.colorSeclectionLabel:active{
+    background-color: #fff;
+    border: 2px solid #000;
+}
+.color-selection {
+    display: flex;
+    align-items: center;
 }
 
-/* On mouse-over, add a grey background color */
-.custom-radio:hover input ~ .checkmark {
-    background-color: #ccc;
+.color-options {
+    display: flex;
+    flex-wrap: wrap;
 }
 
-/* When the radio button is checked, add a blue color */
-.custom-radio input:checked ~ .checkmark {
-    background-color: #2196F3;
+.color-option {
+    width: 40px;
+    height: 20px; 
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px solid transparent; 
+    border-radius: 5px; 
+    font-size: 10px;
+    color: #fff;
+
 }
 
-/* Create the checkmark/indicator */
-.checkmark:after {
-    content: "";
-    position: absolute;
+.color-option span {
     display: none;
 }
 
-/* Show the checkmark when the radio button is checked */
-.custom-radio input:checked ~ .checkmark:after {
+.color-option:hover span {
     display: block;
 }
 
-/* Style the checkmark/indicator */
-.custom-radio .checkmark:after {
-    top: 4px;
-    left: 4px;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: white;
+.stock-status {
+    margin-left: 20px;
 }
 
-/* Adjust the label position */
-.custom-radio-label {
-    padding-left: 30px;
+.stock-label {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
 }
-/* Add space between price and radio buttons */
-.color-selection {
-    margin-top: 10px; /* Adjust the value as needed */
+
+.out-of-stock {
+    background-color: #ff4d4f;
+    color: #fff;
+}
+
+.in-stock {
+    background-color: #52c41a;
+    color: #fff;
 }
 /* End Product View */
