@@ -19,6 +19,11 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css" />
+
     {{-- style --}}
     <link rel="stylesheet" href="{{ asset('assets\css\bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets\css\custom.css') }}">
@@ -41,6 +46,14 @@
 
     <script src="{{ asset('assets\js\bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets\js\jquery.min.js') }}"></script>
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <script>
+        window.addEventListener('dispatchBrowserEvent', event => {
+            alertify.set('notifier', 'position', 'top-right');
+            alertify.notify(event.detail.text, event.detail.type);
+        });
+    </script>
+
 
     @livewireScripts
 </body>
