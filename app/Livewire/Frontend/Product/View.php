@@ -25,6 +25,11 @@ class View extends Component
             }
         } else {
             session()->flash('message', 'Please Login to Continue');
+            // $this->dispatchBrowserEvent('message', [
+            //     'text' => 'Please Login to Continue',
+            //     'type' => 'info',
+            //     'status' => 401
+            // ]);
             return false;
         }
     }
