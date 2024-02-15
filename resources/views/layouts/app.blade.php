@@ -47,15 +47,22 @@
     <script src="{{ asset('assets\js\bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets\js\jquery.min.js') }}"></script>
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
-    <script>
-        window.addEventListener('dispatchBrowserEvent', event => {
+    {{-- <script>
+        window.addEventListener('message', event => {
             alertify.set('notifier', 'position', 'top-right');
             alertify.notify(event.detail.text, event.detail.type);
         });
-    </script>
-
-
+    </script> --}}
     @livewireScripts
+    <script>
+        document.addEventListener('livewire:load', function() {
+            Livewire.on('message', function(data) {
+                // Example handling of the 'message' event
+                console.log(data.text);
+                alert(data.text);
+            });
+        });
+    </script>
 </body>
 
 </html>

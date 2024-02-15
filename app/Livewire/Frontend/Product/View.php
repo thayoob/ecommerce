@@ -15,11 +15,6 @@ class View extends Component
         if (Auth::check()) {
             if (Wishlist::where('user_id', auth()->user()->id)->where('product_id', $productId)->exists()) {
                 session()->flash('message', 'Already Added to Wishlist');
-                $this->dispatchBrowserEvent('message', [
-                    'text' => 'Already Added to Wishlist',
-                    'type' => 'warning',
-                    'status' => 409
-                ]);
                 return false;
             } else {
                 Wishlist::create([
@@ -27,19 +22,9 @@ class View extends Component
                     'product_id' => $productId,
                 ]);
                 session()->flash('message', 'Wishlist Added Successfully');
-                $this->dispatchBrowserEvent('message', [
-                    'text' => 'Wishlist Added Successfully',
-                    'type' => 'sucess',
-                    'status' => 200
-                ]);
             }
         } else {
             session()->flash('message', 'Please Login to Continue');
-            $this->dispatchBrowserEvent('message', [
-                'text' => 'Please Login to Continue',
-                'type' => 'info',
-                'status' => 401
-            ]);
             return false;
         }
     }
