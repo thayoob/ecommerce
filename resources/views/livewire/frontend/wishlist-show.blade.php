@@ -4,6 +4,11 @@
 
             <div class="row">
                 <div class="col-md-12">
+                    @if (session()->has('message'))
+                        <div class="alert alert-success">
+                            {{ session('message') }}
+                        </div>
+                    @endif
                     <div class="shopping-cart">
 
                         <div class="cart-header d-none d-sm-none d-mb-block d-lg-block">
@@ -40,9 +45,19 @@
                                         </div>
                                         <div class="col-md-4 col-12 my-auto">
                                             <div class="remove">
-                                                <a href="" class="btn btn-danger btn-sm">
-                                                    <i class="fa fa-trash"></i> Remove
-                                                </a>
+                                                <button type="button"
+                                                    wire:click='removeWishlistItem({{ $wishlistItem->id }})'
+                                                    class="btn btn-danger btn-sm">
+                                                    <span wire:loading.remove
+                                                        wire:target='removeWishlistItem({{ $wishlistItem->id }})'>
+                                                        <i class="fa fa-trash"></i> Remove
+                                                    </span>
+                                                    <span wire:loading
+                                                        wire:target='removeWishlistItem({{ $wishlistItem->id }})'>
+                                                        <i class="fa fa-trash"></i> Removing...
+                                                    </span>
+                                                </button>
+
                                             </div>
                                         </div>
                                     </div>
