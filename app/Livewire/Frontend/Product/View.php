@@ -21,6 +21,7 @@ class View extends Component
                     'user_id' => auth()->user()->id,
                     'product_id' => $productId,
                 ]);
+                $this->emit('wishlistAddedUpdated');
                 session()->flash('message', 'Wishlist Added Successfully');
             }
         } else {
