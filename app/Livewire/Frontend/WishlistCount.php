@@ -10,8 +10,7 @@ class WishlistCount extends Component
 {
     // wishlistAddedUpdated
     public $wishlistCount;
-    protected $listeners = ['wishlistAddedUpdated
-    ' => 'checkWishlistCount'];
+    protected $listeners = ['wishlistAddedUpdated' => 'checkWishlistCount'];
     public function checkWishlistCount()
     {
         if (Auth::check()) {

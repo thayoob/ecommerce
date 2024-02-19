@@ -29,15 +29,11 @@ class LoginController extends Controller
     // protected $redirectTo = '/home';
     protected function authenticated()
     {
-        if(Auth::user()->role_as=='1')
-        {
+        if (Auth::user()->role_as == '1') {
             return redirect('admin/dashboard')->with('message', 'Welcome to Dashboard');
+        } else {
+            return redirect('/')->with('status', 'Logged In Successfully');
         }
-        else
-        {
-            return redirect('/home')->with('status','Logged In Successfully');
-        }
-
     }
 
     /**

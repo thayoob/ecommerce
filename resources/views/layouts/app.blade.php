@@ -14,6 +14,8 @@
     <meta name="description" content="@yield('meta_description')">
     <meta name="author" content="Laravel Ecom">
 
+    @livewireStyles
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -27,7 +29,6 @@
     {{-- style --}}
     <link rel="stylesheet" href="{{ asset('assets\css\bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets\css\custom.css') }}">
-    @livewireStyles
 
 </head>
 
@@ -40,29 +41,30 @@
             @yield('content')
         </main>
     </div>
-
+    @livewireScripts
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     <script src="{{ asset('assets\js\bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets\js\jquery.min.js') }}"></script>
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
-    {{-- <script>
-        window.addEventListener('message', event => {
-            alertify.set('notifier', 'position', 'top-right');
-            alertify.notify(event.detail.text, event.detail.type);
-        });
-    </script> --}}
-    @livewireScripts
     <script>
-        document.addEventListener('livewire:load', function() {
-            Livewire.on('message', function(data) {
-                // Example handling of the 'message' event
-                console.log(data.text);
-                alert(data.text);
+        document.addEventListener('livewire:init', () => {
+            window.livewire.on('message', (message) => {
+                alertify.set('notifier', 'position', 'top-right');
+                alertify.notify(message.text, message.type);
             });
         });
     </script>
+    {{-- <script>
+        document.addEventListener('livewire:init', () => {
+            window.livewire.on('message', (message) => {
+                alertify.set('notifier', 'position', 'top-right');
+                alertify.notify(message.text, message.type);
+            });
+        });
+    </script> --}}
+
 </body>
 
 </html>
