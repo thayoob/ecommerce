@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class CartShow extends Component
 {
-    public $cart;
+    public $cart, $totalPrice = 0;
     public function decrementQuantity(int $cartId)
     {
         $cartData = Cart::where('id', $cartId)->where('user_id', auth()->user()->id)->first();
@@ -133,6 +133,12 @@ class CartShow extends Component
     public function render()
     {
         $this->cart = Cart::where('user_id', auth()->user()->id)->get();
-        return view('livewire.frontend.cart.cart-show', ['cart' => $this->cart]);
+        return view(
+            'livewire.frontend.cart.cart-show',
+            [
+                'cart' => $this->cart,
+                'totalPrice' => $this->totalPrice
+            ]
+        );
     }
 }
