@@ -109,6 +109,27 @@ class CartShow extends Component
             ]);
         }
     }
+    public function removeCartItem(int $cartId)
+    {
+        $cartRemoveData = Cart::where('user_id', auth()->user()->id)->where('id', $cartId)->first();
+        if ($cartRemoveData) {
+            $cartRemoveData->delete();
+            $this->dispatch('CartAddedUpdated'); //emit in event fire v3
+            session()->flash('message', 'Cart Item Removed Successfully');
+            $this->dispatch('message', [
+                'text' => 'Cart Item Removed Successfully',
+                'type' => 'success',
+                'status' => 200
+            ]);
+        } else {
+            session()->flash('message', 'Something Went to Wrong');
+            $this->dispatch('message', [
+                'text' => 'Something Went to Wrong',
+                'type' => 'error',
+                'status' => 500
+            ]);
+        }
+    }
     public function render()
     {
         $this->cart = Cart::where('user_id', auth()->user()->id)->get();
