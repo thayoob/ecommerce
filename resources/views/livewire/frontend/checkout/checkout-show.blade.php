@@ -30,27 +30,42 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label>Full Name</label>
-                                <input type="text" name="fullname" class="form-control"
+                                <input type="text" wire:model="fullname" class="form-control"
                                     placeholder="Enter Full Name" />
+                                @error('fullname')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label>Phone Number</label>
-                                <input type="number" name="phone" class="form-control"
+                                <input type="number" wire:model="phone" class="form-control"
                                     placeholder="Enter Phone Number" />
+                                @error('phone')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label>Email Address</label>
-                                <input type="email" name="email" class="form-control"
+                                <input type="email" wire:model="email" class="form-control"
                                     placeholder="Enter Email Address" />
+                                @error('email')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label>Pin-code (Zip-code)</label>
-                                <input type="number" name="pincode" class="form-control"
+                                <input type="number" wire:model="pincode" class="form-control"
                                     placeholder="Enter Pin-code" />
+                                @error('pincode')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label>Full Address</label>
-                                <textarea name="address" class="form-control" rows="2"></textarea>
+                                <textarea wire:model="address" class="form-control" rows="2"></textarea>
+                                @error('address')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label>Select Payment Mode: </label>
@@ -70,7 +85,8 @@
                                             aria-labelledby="cashOnDeliveryTab-tab" tabindex="0">
                                             <h6>Cash on Delivery Mode</h6>
                                             <hr />
-                                            <button type="button" class="btn btn-primary">Place Order (Cash on
+                                            <button type="button" wire:click='codOrder' class="btn btn-primary">Place
+                                                Order (Cash on
                                                 Delivery)</button>
 
                                         </div>
