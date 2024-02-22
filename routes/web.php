@@ -37,6 +37,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('cart', [CartController::class, 'index']);
     Route::get('checkout', [CheckoutController::class, 'index']);
 });
+Route::get('thank-you', [FrontendController::class, 'thankyou']);
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
