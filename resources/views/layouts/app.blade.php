@@ -41,7 +41,6 @@
             @yield('content')
         </main>
     </div>
-    @livewireScripts
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -51,20 +50,15 @@
 
     <script>
         window.addEventListener('message', event => {
-            alertify.set('notifier', 'position', 'top-right');
-            alertify.notify(message.text, message.type);
+            if (event.detail) {
+                alertify.set('notifier', 'position', 'top-right');
+                alertify.notify(event.detail.text, event.detail.type);
+            }
+
         });
     </script>
-
-    {{-- <script>
-        document.addEventListener('livewire:init', () => {
-            window.livewire.on('message', (message) => {
-                alertify.set('notifier', 'position', 'top-right');
-                alertify.notify(message.text, message.type);
-            });
-        });
-    </script> --}}
-
+    @livewireScripts
+    @stack('scripts')
 </body>
 
 </html>
