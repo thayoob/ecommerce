@@ -20,8 +20,8 @@ class CheckoutShow extends Component
     {
         $this->payment_id = $value;
         $this->payment_mode = 'Paid by Paypal';
-        $codOrder = $this->palceOrder();
-        if ($codOrder) {
+        $onlineOrder = $this->palceOrder();
+        if ($onlineOrder) {
             Cart::where('user_id', auth()->user()->id)->delete();
             session()->flash('message', 'Order Placed Successfully');
             $this->dispatch('message', [
