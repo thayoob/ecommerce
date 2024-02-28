@@ -38,6 +38,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('cart', [CartController::class, 'index']);
     Route::get('checkout', [CheckoutController::class, 'index']);
     Route::get('order', [OrderController::class, 'index']);
+    Route::get('order/{order_id}', [OrderController::class, 'show']);
 });
 Route::get('thank-you', [FrontendController::class, 'thankyou']);
 
