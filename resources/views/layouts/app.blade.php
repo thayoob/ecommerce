@@ -14,7 +14,7 @@
     <meta name="description" content="@yield('meta_description')">
     <meta name="author" content="Laravel Ecom">
 
-    @livewireStyles
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -30,6 +30,11 @@
     <link rel="stylesheet" href="{{ asset('assets\css\bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets\css\custom.css') }}">
 
+    <!-- owl Carousel -->
+    <link rel="stylesheet" href="{{ asset('assets\css\owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets\css\owl.theme.default.min.css') }}">
+
+    @livewireStyles
 </head>
 
 <body>
@@ -57,6 +62,10 @@
 
         });
     </script>
+
+    <!-- owl carousel -->
+    <script src="{{ asset('assets\js\owl.carousel.min.js') }}"></script>
+    @yield('script')
     @livewireScripts
     @stack('scripts')
 </body>

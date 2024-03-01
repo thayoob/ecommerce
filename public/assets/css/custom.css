@@ -1,3 +1,9 @@
+.underline{
+    height: 4px;
+    width: 100px;
+    background-color: #2874F0;
+    margin: 10px 0px;
+}
 .carousel-item .custom-carousel-content{
     width: 50%;
     transform: translate(0%, -10%);
