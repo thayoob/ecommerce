@@ -4,6 +4,7 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ColorControler;
+use App\Http\Controllers\Admin\OrderControler;
 use App\Http\Controllers\Admin\brandController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ProductController;
@@ -86,6 +87,10 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
         Route::get('/colors/{color_id}/delete', 'destory');
     });
 
+    Route::controller(OrderControler::class)->group(function () {
+        Route::get('/orders', 'index');
+        Route::get('/orders/{orderId}', 'show');
+    });
     Route::get('/brands', [brandController::class, 'index']);
     // Route::get('/brands', App\Livewire\Admin\Brand\Index::class, 'index');
 });
