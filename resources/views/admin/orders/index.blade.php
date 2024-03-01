@@ -63,7 +63,7 @@
                                         <td>{{ $order->created_at->format('d-m-Y') }}</td>
                                         <td>{{ $order->status_message }}</td>
                                         <td>
-                                            <a href="{{ url('order/' . $order->id) }}"
+                                            <a href="{{ url('admin/orders/' . $order->id) }}"
                                                 class="btn btn-primary btn-sm">View</a>
                                         </td>
                                     </tr>
