@@ -13,7 +13,7 @@
                         @endif
                         <h2>Lara Ecom</h2>
                         <h4>Thank You for Shopping with Larva Ecom</h4>
-                        <a href="{{ url('collection') }}" class="btn btn-primary">Shop Now</a>
+                        <a href="{{ url('collections') }}" class="btn btn-primary">Shop Now</a>
                     </div>
                 </div>
             </div>
