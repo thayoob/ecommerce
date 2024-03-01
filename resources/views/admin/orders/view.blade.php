@@ -10,7 +10,13 @@
                 <div class="card-header">
                     <h3>
                         My Order Details
-                        <a href="{{ url('admin/orders') }}" class="btn btn-primary btn-sm text-white float-end">BACK</a>
+                        <a href="{{ url('admin/orders') }}" class="btn btn-danger btn-sm text-white float-end mx-1">BACK</a>
+                        <a href="{{ url('admin/invoice/' . $order->id . '/generate') }}"
+                            class="btn btn-primary btn-sm text-white float-end mx-1">Download
+                            Invoice</a>
+                        <a href="{{ url('admin/invoice/' . $order->id) }}" target="_blank"
+                            class="btn btn-warning btn-sm text-white float-end mx-1">View
+                            Invoice</a>
                     </h3>
                 </div>
                 <div class="card-body">

@@ -91,6 +91,10 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
         Route::get('/orders', 'index');
         Route::get('/orders/{orderId}', 'show');
         Route::put('/orders/{orderId}', 'updateOrderStatus');
+
+
+        Route::get('/invoice/{orderId}', 'viewInvoice');
+        Route::get('/invoice/{orderId}/generate', 'generateInvoice');
     });
     Route::get('/brands', [brandController::class, 'index']);
     // Route::get('/brands', App\Livewire\Admin\Brand\Index::class, 'index');
