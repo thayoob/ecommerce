@@ -34,6 +34,9 @@
     <link rel="stylesheet" href="{{ asset('assets\css\owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets\css\owl.theme.default.min.css') }}">
 
+    <!-- exzoom product image -->
+    <link rel="stylesheet" href="{{ asset('assets\exzoom\jquery.exzoom.css') }}">
+
     @livewireStyles
 </head>
 
@@ -65,6 +68,11 @@
 
     <!-- owl carousel -->
     <script src="{{ asset('assets\js\owl.carousel.min.js') }}"></script>
+
+    <!-- exzoom script -->
+    <script src="{{ asset('assets\exzoom\jquery.exzoom.js') }}"></script>
+
+
     @yield('script')
     @livewireScripts
     @stack('scripts')

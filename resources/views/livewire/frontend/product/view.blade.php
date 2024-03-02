@@ -9,9 +9,24 @@
 
             <div class="row">
                 <div class="col-md-5 mt-3">
-                    <div class="bg-white border">
+                    <div class="bg-white border" wire:ignore>
                         @if ($product->productImages)
-                            <img src="{{ asset($product->productImages[0]->image) }}" class="w-100" alt="Img">
+                            {{-- <img src="{{ asset($product->productImages[0]->image) }}" class="w-100" alt="Img"> --}}
+                            <div class="exzoom" id="exzoom">
+                                <div class="exzoom_img_box">
+                                    <ul class='exzoom_img_ul'>
+                                        @foreach ($product->productImages as $itemImg)
+                                            <li><img src="{{ asset($itemImg->image) }}" /></li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                <div class="exzoom_nav"></div>
+                                <p class="exzoom_btn">
+                                    <a href="javascript:void(0);" class="exzoom_prev_btn">
+                                    </a>
+                                    <a href="javascript:void(0);" class="exzoom_next_btn"> > </a>
+                                </p>
+                            </div>
                         @else
                             No Image Added
                         @endif
@@ -134,3 +149,20 @@
     </div>
 
 </div>
+@push('scripts')
+    <script>
+        $(function() {
+
+            $("#exzoom").exzoom({
+                "navWidth": 60,
+                "navHeight": 60,
+                "navItemNum": 5,
+                "navItemMargin": 7,
+                "navBorder": 1,
+                "autoPlay": false,
+                "autoPlayTimeout": 2000
+            });
+
+        });
+    </script>
+@endpush
