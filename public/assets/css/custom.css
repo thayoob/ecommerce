@@ -363,4 +363,38 @@
     padding-right: 10px;
 }
 
-/* End Checkout page */
+/* footer page */
+.footer-area{
+    padding: 40px 0px;
+    background-color: #2874f0;
+    color: #fff;
+}
+.footer-area a{
+    text-decoration: none;
+}
+.footer-area .footer-heading{
+    font-size: 24px;
+    color: #fff;
+}
+.footer-area .footer-underline{
+    height: 1px;
+    width: 70px;
+    background-color: #ddd;
+    margin: 10px 0px;
+}
+.copyright-area{
+    padding: 14px 0px;
+    background-color: #262626;
+}
+.copyright-area p{
+    margin-bottom: 0px;
+    color: #fff;
+}
+.copyright-area .social-media{
+    text-align: end;
+}
+.copyright-area .social-media a{
+    margin: 0px 10px;
+    color: #fff;
+    width: 20px;
+}
