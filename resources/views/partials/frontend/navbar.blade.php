@@ -92,7 +92,7 @@
                         <a class="nav-link" href="{{ url('/new-arrivals') }}">New Arrivals</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Featured Products</a>
+                        <a class="nav-link" href="{{ url('/featurd-products') }}">Featured Products</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Electronics</a>
@@ -104,7 +104,7 @@
                         <a class="nav-link" href="#">Accessories</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link" href="{{ url('/') }}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Appliances</a>

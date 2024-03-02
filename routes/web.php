@@ -42,6 +42,8 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('/collections/{category_slug}', 'products');
     Route::get('/collections/{category_slug}/{product_slug}', 'productView');
     Route::get('/new-arrivals', 'newArrivals');
+    Route::get('/featurd-products', 'featurdProducts');
+
 
     Route::get('/thank-you', 'thankyou');
 });
