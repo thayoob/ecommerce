@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\OrderControler;
 use App\Http\Controllers\Admin\brandController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Frontend\OrderController;
@@ -66,6 +67,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
+
+    Route::get('settings', [SettingController::class, 'index']);
+    Route::post('settings', [SettingController::class, 'store']);
+
 
     Route::controller(SliderController::class)->group(function () {
         Route::get('sliders', 'index');
