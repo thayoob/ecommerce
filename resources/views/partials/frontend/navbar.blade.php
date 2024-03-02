@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-2 my-auto d-none d-sm-none d-md-block d-lg-block">
-                    <h5 class="brand-name">Laravel Ecom</h5>
+                    <h5 class="brand-name">{{ $appSetting->website_name ?? 'Thayub' }}</h5>
                 </div>
                 <div class="col-md-5 my-auto">
                     <form role="search">
@@ -58,7 +58,8 @@
                                                 document.getElementById('logout-form').submit();">
                                             <i class="fa fa-sign-out"></i>{{ __('Logout') }}
                                         </a>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            class="d-none">
                                             @csrf
                                         </form>
                                     </li>
