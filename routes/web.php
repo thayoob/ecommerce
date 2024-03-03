@@ -42,6 +42,7 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('/featurd-products', 'featurdProducts');
 
 
+    Route::get('search', 'searchProducts');
     Route::get('/thank-you', 'thankyou');
 });
 
