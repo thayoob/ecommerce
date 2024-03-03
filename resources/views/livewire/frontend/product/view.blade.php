@@ -1,5 +1,5 @@
 <div>
-    <div class="py-3 py-md-5 bg-light">
+    <div class="py-3 py-md-5">
         <div class="container">
             @if (session()->has('message'))
                 <div class="alert alert-success">
@@ -146,7 +146,123 @@
             </div>
         </div>
     </div>
+    <div class="py-3 py-md-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <h3>Related
+                        @if ($category)
+                            {{ $category->name }}
+                        @endif
+                        Products
+                    </h3>
+                    <div class="underline"></div>
+                </div>
+                <div class="col-md-12">
+                    @if ($category)
+                        <div class="owl-carousel owl-theme four-carousel">
+                            @foreach ($category->relatedProducts as $relatedproductitem)
+                                <div class="item mb-3">
+                                    <div class="product-card">
+                                        <div class="product-card-img">
+                                            <label class="stock bg-success">New</label>
+                                            @if ($relatedproductitem->productImages->count() > 0)
+                                                <a
+                                                    href="{{ url('/collections/' . $relatedproductitem->category->slug . '/' . $relatedproductitem->slug) }}">
+                                                    <img src="{{ asset($relatedproductitem->productImages->first()->image) }}"
+                                                        alt="{{ $relatedproductitem->name }}">
+                                                </a>
+                                            @endif
+                                        </div>
+                                        <div class="product-card-body">
+                                            <p class="product-brand">{{ $relatedproductitem->brand }}</p>
+                                            <h5 class="product-name">
+                                                <a
+                                                    href="{{ url('/collections/' . $relatedproductitem->category->slug . '/' . $relatedproductitem->slug) }}">
+                                                    {{ $relatedproductitem->name }}
+                                                </a>
+                                            </h5>
+                                            <div>
+                                                <span
+                                                    class="selling-price">₹{{ $relatedproductitem->selling_price }}</span>
+                                                <span
+                                                    class="original-price">₹{{ $relatedproductitem->original_price }}</span>
+                                            </div>
 
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    @else
+                        <div class="p-2">
+                            <h4>No Products available for</h4>
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="py-3 py-md-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <h3>Related
+                        @if ($product)
+                            {{ $product->brand }}
+                        @endif
+                        Products
+                    </h3>
+                    <div class="underline"></div>
+                </div>
+                <div class="col-md-12">
+                    @if ($category)
+                        <div class="owl-carousel owl-theme four-carousel">
+                            @foreach ($category->relatedProducts as $relatedproductitem)
+                                @if ($relatedproductitem->brand == "$product->brand")
+                                    <div class="item mb-3">
+                                        <div class="product-card">
+                                            <div class="product-card-img">
+                                                <label class="stock bg-success">New</label>
+                                                @if ($relatedproductitem->productImages->count() > 0)
+                                                    <a
+                                                        href="{{ url('/collections/' . $relatedproductitem->category->slug . '/' . $relatedproductitem->slug) }}">
+                                                        <img src="{{ asset($relatedproductitem->productImages->first()->image) }}"
+                                                            alt="{{ $relatedproductitem->name }}">
+                                                    </a>
+                                                @endif
+                                            </div>
+                                            <div class="product-card-body">
+                                                <p class="product-brand">{{ $relatedproductitem->brand }}</p>
+                                                <h5 class="product-name">
+                                                    <a
+                                                        href="{{ url('/collections/' . $relatedproductitem->category->slug . '/' . $relatedproductitem->slug) }}">
+                                                        {{ $relatedproductitem->name }}
+                                                    </a>
+                                                </h5>
+                                                <div>
+                                                    <span
+                                                        class="selling-price">₹{{ $relatedproductitem->selling_price }}</span>
+                                                    <span
+                                                        class="original-price">₹{{ $relatedproductitem->original_price }}</span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
+                        </div>
+                    @else
+                        <div class="p-2">
+                            <h4>No Products available for</h4>
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @push('scripts')
     <script>
@@ -162,6 +278,24 @@
                 "autoPlayTimeout": 2000
             });
 
+        });
+
+        $('.four-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            dots: true,
+            nav: false,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 4
+                }
+            }
         });
     </script>
 @endpush
