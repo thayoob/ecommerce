@@ -54,6 +54,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('checkout', [CheckoutController::class, 'index']);
     Route::get('order', [OrderController::class, 'index']);
     Route::get('order/{order_id}', [OrderController::class, 'show']);
+
+    Route::get('profile', [App\Http\Controllers\Frontend\UserController::class, 'index']);
+    Route::post('profile', [App\Http\Controllers\Frontend\UserController::class, 'updateUserDetails']);
 });
 
 
