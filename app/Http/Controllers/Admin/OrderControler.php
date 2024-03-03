@@ -74,10 +74,15 @@ class OrderControler extends Controller
     {
         try {
             $order = Order::findOrFail($orderId);
-            Mail::to("$order->email")->send(new InvoiceOrderMailable($order));
-            return redirect('admin/orders/' . $orderId)->with('message', 'Invoice Mail has been send to ' . $order->email);
+
+            // Send email
+            Mail::to($order->email)->send(new InvoiceOrderMailable($order));
+
+            // Redirect with success message
+            return redirect()->route('admin.orders.show', $orderId)->with('message', 'Invoice email has been sent to ' . $order->email);
         } catch (\Exception $e) {
-            return redirect('admin/orders/' . $orderId)->with('message', 'Something went wrong.! ');
+            // Redirect with error message if something goes wrong
+            return redirect()->route('admin.orders.show', $orderId)->with('error', 'Failed to send invoice email');
         }
     }
 }
