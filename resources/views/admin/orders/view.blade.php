@@ -17,6 +17,9 @@
                         <a href="{{ url('admin/invoice/' . $order->id) }}" target="_blank"
                             class="btn btn-warning btn-sm text-white float-end mx-1">View
                             Invoice</a>
+                        <a href="{{ url('admin/invoice/' . $order->id . '/mail') }}"
+                            class="btn btn-info btn-sm text-white float-end mx-1">Send
+                            Invoice Via Mail</a>
                     </h3>
                 </div>
                 <div class="card-body">
