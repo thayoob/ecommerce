@@ -4,9 +4,11 @@ namespace App\Livewire\Frontend\Checkout;
 
 use App\Models\Cart;
 use App\Models\Order;
-use App\Models\OrderItems;
 use Livewire\Component;
+use App\Models\OrderItems;
 use Illuminate\Support\Str;
+use App\Mail\PlaceOrderMailable;
+use Illuminate\Support\Facades\Mail;
 
 class CheckoutShow extends Component
 {
@@ -23,6 +25,15 @@ class CheckoutShow extends Component
         $onlineOrder = $this->palceOrder();
         if ($onlineOrder) {
             Cart::where('user_id', auth()->user()->id)->delete();
+
+            try {
+                $order = Order::findOrFail($onlineOrder->id);
+                Mail::to($order->email)->send(new PlaceOrderMailable($order));
+                //mail send successfully
+            } catch (\Exception $e) {
+                //Something went worng
+            }
+
             session()->flash('message', 'Order Placed Successfully');
             $this->dispatch('message', [
                 'text' => 'Order Placed Successfully',
@@ -97,6 +108,13 @@ class CheckoutShow extends Component
         $codOrder = $this->palceOrder();
         if ($codOrder) {
             Cart::where('user_id', auth()->user()->id)->delete();
+            try {
+                $order = Order::findOrFail($codOrder->id);
+                Mail::to($order->email)->send(new PlaceOrderMailable($order));
+                //mail send successfully
+            } catch (\Exception $e) {
+                //Something went worng
+            }
             session()->flash('message', 'Order Placed Successfully');
             $this->dispatch('message', [
                 'text' => 'Order Placed Successfully',
@@ -126,6 +144,11 @@ class CheckoutShow extends Component
     {
         $this->fullname = auth()->user()->name;
         $this->email = auth()->user()->email;
+
+        $this->phone = auth()->user()->userDetail->phone;
+        $this->pincode = auth()->user()->userDetail->pin_code;
+        $this->address = auth()->user()->userDetail->address;
+
 
         $this->totalProductAmount = $this->totalProductAmount();
         return view('livewire.frontend.checkout.checkout-show', [
