@@ -5,10 +5,14 @@
         <div class="container">
             <div class="row ">
                 <div class="col-md-10 justify-content-center">
-                    <h4>User Profile</h4>
+                    <h4>User Profile
+                        <a href="{{ url('change-password') }}" class="btn btn-warning float-end">Change Password</a>
+                    </h4>
                     <div class="underline mb-4"></div>
                 </div>
+
                 <div class="col-md-10">
+
                     @if (session('message'))
                         <p class="alert alert-success">{{ session('message') }}</p>
                     @endif
