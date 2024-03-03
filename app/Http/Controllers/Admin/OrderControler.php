@@ -82,7 +82,7 @@ class OrderControler extends Controller
             return redirect()->route('admin.orders.show', $orderId)->with('message', 'Invoice email has been sent to ' . $order->email);
         } catch (\Exception $e) {
             // Redirect with error message if something goes wrong
-            return redirect()->route('admin.orders.show', $orderId)->with('error', 'Failed to send invoice email');
+            return redirect()->route('admin.orders.show', $orderId)->with('message', 'Failed to send invoice email');
         }
     }
 }
