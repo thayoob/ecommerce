@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ColorControler;
 use App\Http\Controllers\Admin\OrderControler;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\brandController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ProductController;
@@ -30,11 +31,6 @@ use App\Http\Controllers\Frontend\WishlistController;
 
 Auth::routes();
 
-// Route::get('/', [FrontendController::class, 'index'])->name('home');
-// Route::get('/collections', [FrontendController::class, 'category']);
-// Route::get('/collections/{category_slug}', [FrontendController::class, 'products']);
-// Route::get('/collections/{category_slug}/{product_slug}', [FrontendController::class, 'productView']);
-
 
 Route::controller(FrontendController::class)->group(function () {
 
@@ -58,9 +54,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('order', [OrderController::class, 'index']);
     Route::get('order/{order_id}', [OrderController::class, 'show']);
 });
-
-
-// Route::get('thank-you', [FrontendController::class, 'thankyou']);
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -119,6 +112,13 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
         Route::get('/invoice/{orderId}', 'viewInvoice');
         Route::get('/invoice/{orderId}/generate', 'generateInvoice');
     });
+    Route::controller(UserController::class)->group(function () {
+        Route::get('/users', 'index');
+        Route::get('/users/create', 'create');
+        Route::post('/users/create', 'store');
+        Route::get('/users/{user_id}/edit', 'edit');
+        Route::put('/users/{user_id}', 'update');
+        Route::get('/users/{user_id}/delete', 'destory');
+    });
     Route::get('/brands', [brandController::class, 'index']);
-    // Route::get('/brands', App\Livewire\Admin\Brand\Index::class, 'index');
 });

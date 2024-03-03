@@ -54,7 +54,7 @@
         <!-- Brands -->
         <li class="nav-item">
             <a class="nav-link" href="{{ url('admin/brands') }}">
-                <i class="mdi mdi-view-headline menu-icon"></i>
+                <i class="mdi mdi-chart-pie menu-icon"></i>
                 <span class="menu-title">Brands</span>
             </a>
         </li>
@@ -72,29 +72,8 @@
                 <span class="menu-title">Home Sliders</span>
             </a>
         </li>
-        <!-- Charts -->
-        <li class="nav-item">
-            <a class="nav-link" href="pages/charts/chartjs.html">
-                <i class="mdi mdi-chart-pie menu-icon"></i>
-                <span class="menu-title">Charts</span>
-            </a>
-        </li>
-        <!-- Tables -->
-        <li class="nav-item">
-            <a class="nav-link" href="pages/tables/basic-table.html">
-                <i class="mdi mdi-grid-large menu-icon"></i>
-                <span class="menu-title">Tables</span>
-            </a>
-        </li>
-        <!-- Icons -->
-        <li class="nav-item">
-            <a class="nav-link" href="pages/icons/mdi.html">
-                <i class="mdi mdi-emoticon menu-icon"></i>
-                <span class="menu-title">Icons</span>
-            </a>
-        </li>
         <!-- User Pages -->
-        {{-- <li class="nav-item">
+        <li class="nav-item">
             <a class="nav-link collapsed" data-bs-toggle="collapse" href="#userPages" aria-expanded="false"
                 aria-controls="userPages">
                 <i class="mdi mdi-account menu-icon"></i>
@@ -104,23 +83,14 @@
             <div class="collapse" id="userPages">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
-                        <a class="nav-link" href="pages/samples/login.html">Login</a>
+                        <a class="nav-link" href="{{ url('admin/users/create') }}">Add user</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pages/samples/login-2.html">Login 2</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pages/samples/register.html">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pages/samples/register-2.html">Register 2</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pages/samples/lock-screen.html">Lockscreen</a>
+                        <a class="nav-link" href="{{ url('admin/users') }}">View users</a>
                     </li>
                 </ul>
             </div>
-        </li> --}}
+        </li>
         <!-- Site Settings -->
         <li class="nav-item">
             <a class="nav-link" href="{{ url('/admin/settings') }}">
